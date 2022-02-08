@@ -5,12 +5,12 @@
  * @package vektor-inc/vk-helpers
  * @license GPL-2.0+
  *
- * @version 0.0.1
+ * @version 0.0.2
  */
 
 namespace VektorInc\VK_Helpers;
 
-class VK_Helpers {
+class VkHelpers {
 
 	/*
 	get_post_top_info

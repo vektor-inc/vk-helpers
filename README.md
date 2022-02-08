@@ -1,5 +1,5 @@
 # VK Helpers
 
 ```
-composer require --no-dev vektor-inc/vk-helpers
+composer require vektor-inc/vk-helpers
 ```
