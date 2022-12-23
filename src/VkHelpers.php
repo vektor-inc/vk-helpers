@@ -40,6 +40,15 @@ class VkHelpers {
 	// }
 	// }
 
+	/**
+	 * Get post top page info
+	 *
+	 * @return array{
+	 *   id: string | int,
+	 *   use: bool,
+	 *   name: string
+	 * } $post_top_info
+	 */
 	public static function get_post_top_info() {
 
 		$post_top_info = array();
@@ -117,7 +126,7 @@ class VkHelpers {
 
 		// Get custom post type archive url.
 		/*-------------------------------------------*/
-		if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+		if ( $post_top_info['use'] && 'post' === $post_type_info['slug'] ) {
 			$post_type_info['url'] = esc_url( get_the_permalink( $post_top_info['id'] ) );
 		} elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
 			$post_type_info['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
