@@ -8,12 +8,12 @@
  * @version 0.0.1
  */
 
-namespace VektorInc\VK_Helpers\VkCustomHtmlControl;
+namespace VektorInc\VK_Helpers;
 
 /**
  * VkCustomHtmlControl
  */
-class VkCustomHtmlControl extends WP_Customize_Control {
+class VkCustomHtmlControl extends \WP_Customize_Control {
 	public $type             = 'customtext';
 	public $custom_title_sub = ''; // we add this for the extra custom_html.
 	public $custom_html      = ''; // we add this for the extra custom_html.

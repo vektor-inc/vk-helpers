@@ -8,12 +8,15 @@
  * @version 0.0.1
  */
 
-namespace VektorInc\VK_Helpers\VkCustomTextControl;
+namespace VektorInc\VK_Helpers;
+
+// 使う方で
+// use VektorInc\VK_Helpers\VkCustomHtmlControl;
 
 /**
  * VkCustomTextControl
  */
-class VkCustomTextControl extends WP_Customize_Control {
+class VkCustomTextControl extends \WP_Customize_Control {
 	public $type         = 'customtext';
 	public $description  = ''; // we add this for the extra description.
 	public $input_before = '';

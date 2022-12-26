@@ -12,6 +12,14 @@ namespace VektorInc\VK_Helpers;
 
 class VkHelpers {
 
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		require  dirname( __FILE__ )  . '/VkCustomHtmlControl.php';
+		require  dirname( __FILE__ )  . '/VkCustomTextControl.php';
+	}
+
 	/*
 	get_post_top_info
 	get_post_type_info
