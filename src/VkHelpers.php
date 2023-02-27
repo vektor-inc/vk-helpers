@@ -5,7 +5,7 @@
  * @package vektor-inc/vk-helpers
  * @license GPL-2.0+
  *
- * @version 0.0.3
+ * @version 0.0.4
  */
 
 namespace VektorInc\VK_Helpers;
@@ -293,10 +293,14 @@ class VkHelpers {
 
 	/**
 	 * 色の自動変更で255を越えてしまった時に255に強制的に抑える
+	 * ついでに小数点を四捨五入
 	 *
 	 * @param  [type] $num RGBの10進数の数値.
 	 */
 	public static function color_adjust_under_ff( $num ) {
+		// $num が整数でない場合 PHP8.1 でエラーになるので四捨五入.
+		// If $num is not an integer, an error will occur in PHP8.1, so it is rounded.
+		$num = round( $num );
 		if ( $num > 256 ) {
 			$num = 255;
 		}
