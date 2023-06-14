@@ -5,7 +5,7 @@
  * @package vektor-inc/vk-helpers
  * @license GPL-2.0+
  *
- * @version 0.0.4
+ * @version 0.0.5
  */
 
 namespace VektorInc\VK_Helpers;
