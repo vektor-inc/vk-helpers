@@ -10,6 +10,9 @@
 
 namespace VektorInc\VK_Helpers;
 
+/**
+ * VK_Helpers
+ */
 class VkHelpers {
 
 	/*
@@ -115,9 +118,9 @@ class VkHelpers {
 				'span' => array( 'class' => array() ),
 				'b'    => array(),
 			);
-			if ( $post_top_info['use'] && $post_type_info['slug'] == 'post' ) {
+			if ( $post_top_info['use'] && 'post' === $post_type_info['slug'] ) {
 				$post_type_info['name'] = wp_kses( get_the_title( $post_top_info['id'] ), $allowed_html );
-			} elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
+			} elseif ( $woocommerce_shop_page_id && 'product' === $post_type_info['slug'] ) {
 				$post_type_info['name'] = wp_kses( get_the_title( $woocommerce_shop_page_id ), $allowed_html );
 			} else {
 				$post_type_info['name'] = esc_html( $post_type_object->labels->name );
@@ -128,7 +131,7 @@ class VkHelpers {
 		/*-------------------------------------------*/
 		if ( $post_top_info['use'] && 'post' === $post_type_info['slug'] ) {
 			$post_type_info['url'] = esc_url( get_the_permalink( $post_top_info['id'] ) );
-		} elseif ( $woocommerce_shop_page_id && $post_type_info['slug'] == 'product' ) {
+		} elseif ( $woocommerce_shop_page_id && 'product' === $post_type_info['slug'] ) {
 			$post_type_info['url'] = esc_url( get_the_permalink( $woocommerce_shop_page_id ) );
 		} else {
 			$post_type_info['url'] = esc_url( get_post_type_archive_link( $post_type_info['slug'] ) );
@@ -138,6 +141,13 @@ class VkHelpers {
 		return $post_type_info;
 	}
 
+	/**
+	 * Get Post Taxonomies
+	 *
+	 * @param int   $post_id : post id.
+	 * @param array $args : tax onomies args.
+	 * @return array $taxonomies
+	 */
 	public static function get_display_taxonomies( $post_id = null, $args = null ) {
 		if ( ! $post_id ) {
 			global $post;
@@ -145,7 +155,7 @@ class VkHelpers {
 		}
 		$taxonomies = get_the_taxonomies( $post_id, $args );
 
-		// 非公開のタクソノミーを自動的に除外
+		// 非公開のタクソノミーを自動的に除外.
 		foreach ( $taxonomies as $taxonomy => $value ) {
 			$taxonomy_info = get_taxonomy( $taxonomy );
 			if ( empty( $taxonomy_info->public ) ) {
