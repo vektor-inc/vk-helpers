@@ -18,7 +18,7 @@ class VkHelpersTest extends WP_UnitTestCase {
 
 		print PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
-		print 'vk_helpers' . PHP_EOL;
+		print 'VkHelpers::get_post_type_info()' . PHP_EOL;
 		print '------------------------------------' . PHP_EOL;
 		print PHP_EOL;
 
@@ -221,6 +221,48 @@ class VkHelpersTest extends WP_UnitTestCase {
 			// print 'expected------------------------------------' . PHP_EOL;
 			// var_dump( $value['expected'] ) . PHP_EOL;
 			// print '------------------------------------' . PHP_EOL;
+
+			$this->assertSame( $value['expected'], $actual );
+
+		}
+	}
+
+	/**
+	 * Test color_auto_modifi_single
+	 *
+	 * @return void
+	 */
+	public function test_color_auto_modifi_single() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'VkHelpers::color_auto_modifi_single()' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print PHP_EOL;
+
+		$test_array = array(
+			'00'  => array(
+				'change_rate' => '1.1',
+				'color_num'   => '00',
+				'expected'    => '00',
+			),
+			'100' => array(
+				'change_rate' => '1.1',
+				'color_num'   => '100',
+				'expected'    => '6e',
+			),
+			'250' => array(
+				'change_rate' => '1.1',
+				'color_num'   => '250',
+				'expected'    => 'ff',
+			),
+		);
+		foreach ( $test_array as $key => $value ) {
+
+			// Move to test page.
+			$this->go_to( $value['target_url'] );
+
+			$actual = VkHelpers::color_auto_modifi_single( $value['color_num'], $value['change_rate'] );
 
 			$this->assertSame( $value['expected'], $actual );
 
