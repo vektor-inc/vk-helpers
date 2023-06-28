@@ -228,6 +228,38 @@ class VkHelpersTest extends WP_UnitTestCase {
 	}
 
 	/**
+	 * Test color_auto_modifi
+	 *
+	 * @return void
+	 */
+	public function test_color_auto_modifi() {
+
+		print PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print 'VkHelpers::color_auto_modifi()' . PHP_EOL;
+		print '------------------------------------' . PHP_EOL;
+		print PHP_EOL;
+
+		$test_array = array(
+			'#00a0e9'  => array(
+				'change_rate' => '1.1',
+				'color_hex'   => '#00a0e9',
+				'expected'    => '#00b0ff',
+			),
+		);
+		foreach ( $test_array as $key => $value ) {
+
+			// Move to test page.
+			$this->go_to( $value['target_url'] );
+
+			$actual = VkHelpers::color_auto_modifi( $value['color_hex'], $value['change_rate'] );
+
+			$this->assertSame( $value['expected'], $actual );
+
+		}
+	}
+
+	/**
 	 * Test color_auto_modifi_single
 	 *
 	 * @return void
