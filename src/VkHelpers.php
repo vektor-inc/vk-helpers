@@ -5,7 +5,7 @@
  * @package vektor-inc/vk-helpers
  * @license GPL-2.0+
  *
- * @version 0.0.5
+ * @version 0.1.0
  */
 
 namespace VektorInc\VK_Helpers;
@@ -14,6 +14,19 @@ namespace VektorInc\VK_Helpers;
  * VK_Helpers
  */
 class VkHelpers {
+
+	/**
+	 * Constructor
+	 */
+	private function __construct() {
+		// Composer版じゃない古い VK_Helpers が既にある場合はエイリアスを作成しない.
+		if ( class_exists( 'VK_Helpers' ) ) {
+			return;
+		}
+
+		// Composer版じゃない古い VK_Helpers が使用されている場所でも動作するようにエイリアスを作成.
+		class_alias( '\VektorInc\VK_Helpers\VkHelpers', '\VK_Helpers' );
+	}
 
 	/*
 	get_post_top_info
