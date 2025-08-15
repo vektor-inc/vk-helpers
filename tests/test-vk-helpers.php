@@ -249,9 +249,6 @@ class VkHelpersTest extends WP_UnitTestCase {
 		);
 		foreach ( $test_array as $key => $value ) {
 
-			// Move to test page.
-			$this->go_to( $value['target_url'] );
-
 			$actual = VkHelpers::color_auto_modifi( $value['color_hex'], $value['change_rate'] );
 
 			$this->assertSame( $value['expected'], $actual );
@@ -290,9 +287,6 @@ class VkHelpersTest extends WP_UnitTestCase {
 			),
 		);
 		foreach ( $test_array as $key => $value ) {
-
-			// Move to test page.
-			$this->go_to( $value['target_url'] );
 
 			$actual = VkHelpers::color_auto_modifi_single( $value['color_num'], $value['change_rate'] );
 
