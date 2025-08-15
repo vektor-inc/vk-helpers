@@ -13,6 +13,8 @@ npm run phpunit
 
 == Changelog ==
 
+[ Bug fix ] Fix Unit Test
+
 * 0.2.0
   [ Bug fix ] Fix color modifi
 
