@@ -103,9 +103,15 @@ class VkHelpers {
 		// When WooCommerce taxonomy archive page , get_post_type() is does not work properly.
 
 		global $wp_query;
+		global $post;
+
+		// ブロックエディタで投稿タイプを取得するために最初に global $post->post_type から取得
+		// これによりループ内でも該当の投稿の投稿タイプを取得するようになった
+		if ( ! empty( $post->post_type ) ) {
+			$post_type_info['slug'] = $post->post_type;
 		// is_page() は編集画面で正しく動作しない（まぁ正しく動作しなくてもいいんですけど...）のと、
 		// 固定ページはタクソノミーアーカイブなども基本存在しないので get_post_type() を使用する.
-		if ( 'page' === get_post_type() ) {
+		} else if ( 'page' === get_post_type() ) {
 			$post_type_info['slug'] = 'page';
 		} elseif ( ! empty( $wp_query->query_vars['post_type'] ) ) {
 
