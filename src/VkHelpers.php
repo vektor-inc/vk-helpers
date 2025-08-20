@@ -106,7 +106,8 @@ class VkHelpers {
 		global $pagenow;
 
 		// 管理画面で記事編集画面（wp-admin/post.php）の場合
-		if ( is_admin() && 'post.php' === $pagenow )  {
+		// ブロックエディタでは is_admin() が false になるので $GLOBALS から取得
+		if ( ( is_admin() && 'post.php' === $pagenow ) || ( ! is_admin() && isset($GLOBALS['post']) && isset($GLOBALS['post']->post_type) ) ) {
 			global $post;
 			if ( isset($post->post_type) ){
 				$post_type_info['slug'] = $post->post_type;
