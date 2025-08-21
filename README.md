@@ -13,8 +13,9 @@ npm run phpunit
 
 == Changelog ==
 
- [ Bug fix ] Fix an issue where the correct post type was not retrieved on the post edit screen.
- [ Bug fix ] Fix Unit Test
+* 0.2.1
+  [ Bug fix ] Fix an issue where the correct post type was not retrieved on the post edit screen.
+  [ Bug fix ] Fix Unit Test
 
 * 0.2.0
   [ Bug fix ] Fix color modifi
