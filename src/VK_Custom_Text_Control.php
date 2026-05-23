@@ -109,8 +109,14 @@ if ( ! function_exists( 'vk_helpers_register_custom_text_control' ) ) {
 							<?php
 							// input_attrs を 1 つずつ吐き出す。
 							foreach ( $input_attrs as $attr_name => $attr_value ) :
-								// キーが文字列でない or 空文字なら無視。
-								if ( ! is_string( $attr_name ) || '' === $attr_name ) {
+								// キーが文字列でない場合は無視。
+								if ( ! is_string( $attr_name ) ) {
+									continue;
+								}
+								$attr_name = trim( $attr_name );
+								// HTML 属性名トークンのみ許可（空白・記号混入を拒否）。
+								// 「foo onfocus」のようなキーで on* チェックを迂回されるのを防ぐ。
+								if ( '' === $attr_name || ! preg_match( '/^[a-zA-Z_:][a-zA-Z0-9:._-]*$/', $attr_name ) ) {
 									continue;
 								}
 								$attr_name_lc = strtolower( $attr_name );

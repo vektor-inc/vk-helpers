@@ -82,7 +82,7 @@ add_action(
 | `input_before` | string | `''` | HTML rendered before the input. |
 | `input_after` | string | `''` | HTML rendered after the input. |
 | `input_type` | string | `text` | HTML5 input type. Allowed: `text` / `number` / `email` / `url` / `tel` / `password` / `search`. Disallowed values fall back to `text`. |
-| `input_attrs` | array | `array()` | Extra attributes on the `input`. `type`, `value`, `style` and any `on*` event handlers are blocked. Boolean values become HTML5 boolean attributes (e.g. `'required' => true`). |
+| `input_attrs` | array | `array()` | Extra attributes on the `input`. Attribute names must match the HTML attribute-name token pattern (`/^[a-zA-Z_:][a-zA-Z0-9:._-]*$/`); names containing whitespace or other invalid characters are dropped. `type`, `value`, `style` and any `on*` event handlers are blocked. Boolean values become HTML5 boolean attributes (e.g. `'required' => true`). |
 
 
 == Changelog ==
